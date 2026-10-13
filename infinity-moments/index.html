@@ -66,10 +66,7 @@ textarea.fld::placeholder{color:var(--ink2)}
 .mui-menu{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 4px);margin:0;padding:8px 0;list-style:none;background:#FFFFFF;border-radius:4px;max-height:min(336px,60vh);overflow-y:auto;box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}
 .mui-menu[hidden]{display:none}
 .mui-menu li{box-sizing:border-box;min-height:48px;display:flex;align-items:center;padding:6px 16px;font:400 16px/1.5 'Lato',system-ui,sans-serif;color:var(--ink);cursor:pointer}
-.mui-menu li:hover{background:rgba(45,27,90,.06)}
-.mui-menu li[aria-selected="true"]{background:rgba(45,27,90,.12)}
-.mui-menu li.act{background:rgba(45,27,90,.10)}
-.mui-menu li[aria-selected="true"].act{background:rgba(45,27,90,.16)}
+.mui-menu li:hover,.mui-menu li.act,.mui-menu li[aria-selected="true"]{background:var(--ink);color:#FFFFFF}
 @media (max-width:1023px){
   .im-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .im-wrap{padding:32px 24px 56px}
@@ -140,27 +137,27 @@ textarea.fld::placeholder{color:var(--ink2)}
 </main>
 
 <script>
-const LOCAL = ['1000005914.jpg', '1000005917.jpg', '1000006436.jpg', '1000006449.jpg', '1000006487.jpg', '1000006555.jpg', '3.jpg'];
+const LOCAL = ['1000005914.jpg', '1000005917.jpg', '1000006436.jpg', '1000006449.jpg', '1000006487.jpg', '1000006555.jpg', '3.jpg', 'x-bookends.webp', 'x-bookmark.jpg', 'x-candleholder.webp', 'x-pencilbox.jpg', 'x-ringholder.webp'];
 const U = (id) => { const f = id.split('/').pop(); return LOCAL.indexOf(f) > -1 ? '../images/' + f : 'https://images.squarespace-cdn.com/content/v1/6a0008fc28ef2f6650d0ae64/' + id + '?format=750w'; };
 const P = (name, v, imgs, photo) => ({ name, v: v.map(([label, price]) => ({ label, price })), imgs: (imgs || []).map(U), photo: !!photo });
 const CATS = [
   { id: 'stationery', name: 'Stationery', products: [
     P('Notebooks', [['Small', 12], ['Medium', 15], ['Large', 18]], ['92f41633-9f04-444a-b107-7f4557cb88be/7.jpg']),
-    P('Bookmark', [['Standard', 5]]),
+    P('Bookmark', [['Standard', 5]], ['x-bookmark.jpg']),
     P('Pens', [['Without charms', 5], ['With charms', 7]], ['af1f3cac-bc11-415c-b51b-7279d0732633/1000006449.jpg']),
-    P('Pencil/Pen Box', [['Standard', 10]])
+    P('Pencil/Pen Box', [['Standard', 10]], ['x-pencilbox.jpg'])
   ] },
   { id: 'candle-holders', name: 'Candle Holders', products: [
     P('Tealight Holder', [['Mini or small', 5], ['Medium, double', 7], ['Large, triple, oval', 10]], ['97c294b6-bc67-4515-8ccd-a20a7673bbd9/13.jpg']),
     P('Heart Deep Candle Holder', [['Without extras', 20], ['With extras', 35]], ['9f4ff9ef-5b1d-497d-9956-c2de7d3e4787/1000006436.jpg', '876c76b4-7980-41bd-bcba-88d195640b8e/23.jpg', 'cf6e334b-6d8b-4c1c-b0f3-50e80edab3bb/1000005914.jpg', 'fc9f7c0a-3363-4b1c-8204-82c52a52350c/1000006487.jpg']),
-    P('Small Deep Round Candle Holder', [['With extras', 20]])
+    P('Small Deep Round Candle Holder', [['With extras', 20]], ['x-candleholder.webp'])
   ] },
   { id: 'floral-blocks', name: 'Floral Blocks', products: [
     P('Floral Block', [['Square', 75], ['Heart', 100], ['Hexagon', 125], ['Rectangle, small', 75], ['Rectangle, large', 150], ['Rectangle, extra large', 200]], ['f6ef960f-b836-4164-b2dc-de50f2e1d661/3.jpg', '48d7d611-b86b-4734-88ca-e99547e04d77/20.jpg', '627098d6-b5e2-4136-b926-6d88d9f5fc69/5.jpg', '80ce2799-b703-4033-8909-70ab279ed543/1000005917.jpg'])
   ] },
   { id: 'bookends', name: 'Bookends', products: [
     P('Arc Bookends', [['Small', 40], ['Medium', 60], ['Large', 80]], ['db2b532f-3692-4f5c-b724-43919d6704af/9.jpg']),
-    P('Double-End Bookends', [['Standard', 110]])
+    P('Double-End Bookends', [['Standard', 110]], ['x-bookends.webp'])
   ] },
   { id: 'games', name: 'Games', products: [
     P('Dominoes', [['One color only, includes box', 35], ['With customizations, includes box', 50]], ['f9aad428-71e1-4879-8c3a-0d656a1ab9fa/19.jpg', 'e0449565-6432-4f98-a5c3-297dabea722c/8.jpg']),
@@ -169,7 +166,7 @@ const CATS = [
   { id: 'picture-frames', name: 'Picture Frames', products: [
     P('Square Frame', [['Standard', 12]]),
     P('Bubble Rectangle Deep Frame', [['Standard', 15]]),
-    P('Ring Holder', [['Without flowers', 8], ['With flowers', 10]])
+    P('Ring Holder', [['Without flowers', 8], ['With flowers', 10]], ['x-ringholder.webp'])
   ] },
   { id: 'coasters', name: 'Coasters', products: [
     P('Shaped Coasters, Large', [['Flat round', 8], ['Heart', 8], ['Beveled heart', 8]], ['eb6dcd5e-de90-487f-af83-57af83ca6caa/26.jpg']),
