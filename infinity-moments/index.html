@@ -12,7 +12,7 @@
 <style>
 @font-face{font-family:'Vemior';src:url('../fonts/vemior.otf') format('opentype'),url('../fonts/vemior.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
 :root{--bg:#EDE7F6;--ink:#2D1B5A;--ink2:#4A3680;--line:#7B66B3;--tile:#DCD2EF;--rule:#C9BBE6}
-body{margin:0;font-family:'Lato',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+body{margin:0;font-family:'Lato',system-ui,sans-serif;color:var(--ink);background:var(--bg) linear-gradient(90deg,#D3C4EC 0%,#E0D5F2 14%,#EAE2F5 28%,#EDE7F6 42%,#EDE7F6 58%,#EAE2F5 72%,#E0D5F2 86%,#D3C4EC 100%) no-repeat}
 button{font-family:inherit}
 h1,.hd{font-family:'Vemior',Georgia,serif;font-weight:400;font-synthesis:none}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -55,13 +55,17 @@ textarea.fld::placeholder{color:var(--ink2)}
 .hidden{display:none}
 /* Material UI style outlined select */
 .mui-sel{position:relative;width:100%;margin-top:8px}
-.mui-field{all:unset;box-sizing:border-box;display:flex;align-items:center;width:100%;height:56px;padding:0 40px 0 14px;border:1px solid var(--line);border-radius:4px;font:400 16px/1.4375 'Lato',system-ui,sans-serif;color:var(--ink);cursor:pointer;position:relative}
-.mui-field:hover{border-color:var(--ink)}
-.mui-field:focus-visible,.mui-field[aria-expanded="true"]{border:2px solid var(--ink);padding:0 39px 0 13px;outline:none}
+.mui-field{all:unset;box-sizing:border-box;display:flex;align-items:center;width:100%;height:56px;padding:0 40px 0 14px;border:0;border-radius:4px;font:400 16px/1.4375 'Lato',system-ui,sans-serif;color:var(--ink);cursor:pointer;position:relative}
+.mui-ol{position:absolute;top:-5px;left:0;right:0;bottom:0;margin:0;padding:0 8px;pointer-events:none;border:1px solid var(--line);border-radius:4px;min-width:0}
+.mui-ol legend{float:unset;width:auto;display:block;padding:0;height:11px;font-size:12px;line-height:11px;visibility:hidden;max-width:100%;white-space:nowrap}
+.mui-ol legend span{padding:0 5px;display:inline-block}
+.mui-field:hover ~ .mui-ol{border-color:var(--ink)}
+.mui-field:focus-visible ~ .mui-ol,.mui-field[aria-expanded="true"] ~ .mui-ol{border:2px solid var(--ink)}
+.mui-field:focus-visible{outline:none}
 .mui-val{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mui-arrow{position:absolute;right:7px;top:50%;width:24px;height:24px;margin-top:-12px;fill:var(--ink2);transition:transform .2s}
 .mui-field[aria-expanded="true"] .mui-arrow{transform:rotate(180deg)}
-.mui-lbl{position:absolute;top:-9px;left:10px;padding:0 5px;background:var(--bg);font:400 12px/1.4 'Lato',system-ui,sans-serif;color:var(--ink2);pointer-events:none}
+.mui-lbl{position:absolute;top:-9px;left:10px;padding:0 5px;font:400 12px/1.4 'Lato',system-ui,sans-serif;color:var(--ink2);pointer-events:none}
 .mui-field:focus-visible ~ .mui-lbl,.mui-field[aria-expanded="true"] ~ .mui-lbl{color:var(--ink)}
 .mui-menu{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 4px);margin:0;padding:8px 0;list-style:none;background:#FFFFFF;border-radius:4px;max-height:min(336px,60vh);overflow-y:auto;box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}
 .mui-menu[hidden]{display:none}
@@ -194,7 +198,7 @@ const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 function MuiSelect(root, label) {
   const id = root.id;
   root.classList.add('mui-sel');
-  root.innerHTML = '<button type="button" class="mui-field" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="' + id + '-list" aria-labelledby="' + id + '-lbl ' + id + '-val"><span class="mui-val" id="' + id + '-val"></span><svg class="mui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"></path></svg></button><span class="mui-lbl" id="' + id + '-lbl">' + label + '</span><ul class="mui-menu" id="' + id + '-list" role="listbox" aria-labelledby="' + id + '-lbl" hidden></ul>';
+  root.innerHTML = '<button type="button" class="mui-field" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="' + id + '-list" aria-labelledby="' + id + '-lbl ' + id + '-val"><span class="mui-val" id="' + id + '-val"></span><svg class="mui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"></path></svg></button><fieldset class="mui-ol" aria-hidden="true"><legend><span>' + label + '</span></legend></fieldset><span class="mui-lbl" id="' + id + '-lbl">' + label + '</span><ul class="mui-menu" id="' + id + '-list" role="listbox" aria-labelledby="' + id + '-lbl" hidden></ul>';
   const btn = root.querySelector('.mui-field'), list = root.querySelector('.mui-menu'), valEl = root.querySelector('.mui-val');
   const api = { value: '', onChange: null };
   let opts = [], act = 0;
