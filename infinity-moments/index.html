@@ -143,7 +143,7 @@ textarea.fld::placeholder{color:var(--ink2)}
 <script>
 const LOCAL = ['1000005914.jpg', '1000005917.jpg', '1000006436.jpg', '1000006449.jpg', '1000006487.jpg', '1000006555.jpg', '3.jpg', 'x-bookends.webp', 'x-bookmark.jpg', 'x-candleholder.webp', 'x-pencilbox.jpg', 'x-ringholder.webp'];
 const U = (id) => { const f = id.split('/').pop(); return LOCAL.indexOf(f) > -1 ? '../images/' + f : 'https://images.squarespace-cdn.com/content/v1/6a0008fc28ef2f6650d0ae64/' + id + '?format=750w'; };
-const P = (name, v, imgs, photo) => ({ name, v: v.map(([label, price]) => ({ label, price })), imgs: (imgs || []).map(U), photo: !!photo });
+const P = (name, v, imgs, photo, fx) => ({ fx: fx || '', name, v: v.map(([label, price]) => ({ label, price })), imgs: (imgs || []).map(U), photo: !!photo });
 const CATS = [
   { id: 'stationery', name: 'Stationery', products: [
     P('Notebooks', [['Small', 12], ['Medium', 15], ['Large', 18]], ['92f41633-9f04-444a-b107-7f4557cb88be/7.jpg']),
@@ -186,7 +186,7 @@ const CATS = [
   ] },
   { id: 'signs', name: 'Signs', products: [
     P('Name Signs', [['Mom', 15], ['Dad', 15], ['Mr. and Mrs.', 15]]),
-    P('Pet Paw Sign with Stand', [['Standard', 30]], ['c42a3b35-34df-425e-b8de-95b3f1f252eb/25.jpg'])
+    P('Pet Paw Sign with Stand', [['Standard', 30]], ['c42a3b35-34df-425e-b8de-95b3f1f252eb/25.jpg'], false, 'brightness(1.4) contrast(0.92) saturate(1.05)')
   ] }
 ];
 const $ = (id) => document.getElementById(id);
@@ -243,7 +243,7 @@ function renderGrid() {
   $('grid').innerHTML = shown.map((x) => {
     const prices = x.p.v.map((v) => v.price), n = x.p.v.length;
     const media = x.p.imgs.length
-      ? '<img class="im-img" src="' + x.p.imgs[0] + '" alt="' + esc(x.p.name) + '" loading="lazy">'
+      ? '<img class="im-img" src="' + x.p.imgs[0] + '" alt="' + esc(x.p.name) + '" loading="lazy"' + (x.p.fx ? ' style="filter:' + x.p.fx + '"' : '') + '>'
       : '<div class="im-ph">' + ICON(40) + '<div class="ph-name hd">' + esc(x.p.name) + '</div><div class="ph-tag">PLACEHOLDER IMAGE</div></div>';
     return '<button class="im-card" type="button" data-id="' + x.id + '">' + media +
       '<div class="c-cat">' + esc(x.cat.name.toUpperCase()) + '</div><div class="c-name hd">' + esc(x.p.name) + '</div>' +
@@ -257,9 +257,10 @@ function renderGallery() {
     $('gallery').innerHTML = '<div class="im-ph" style="gap:12px;padding:24px">' + ICON(56) + '<div class="ph-name hd" style="font-size:30px">' + esc(cur.p.name) + '</div><div class="ph-tag" style="font-size:13px">PLACEHOLDER IMAGE</div></div>';
     return;
   }
-  let h = '<img class="im-img" src="' + imgs[imgIdx] + '" alt="' + esc(cur.p.name) + '">';
+  const fx = cur.p.fx ? ' style="filter:' + cur.p.fx + '"' : '';
+  let h = '<img class="im-img" src="' + imgs[imgIdx] + '" alt="' + esc(cur.p.name) + '"' + fx + '>';
   if (imgs.length > 1) {
-    h += '<div class="thumbs">' + imgs.map((s, i) => '<button class="thumb" type="button" data-i="' + i + '" aria-label="Show photo ' + (i + 1) + '" aria-pressed="' + (i === imgIdx) + '"><img src="' + s + '" alt=""></button>').join('') + '</div>';
+    h += '<div class="thumbs">' + imgs.map((s, i) => '<button class="thumb" type="button" data-i="' + i + '" aria-label="Show photo ' + (i + 1) + '" aria-pressed="' + (i === imgIdx) + '"><img src="' + s + '" alt=""' + fx + '></button>').join('') + '</div>';
   }
   $('gallery').innerHTML = h;
 }
