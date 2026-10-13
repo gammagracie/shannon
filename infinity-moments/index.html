@@ -7,46 +7,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Infinity Moments Shop Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;font-family:'Jost',system-ui,sans-serif;color:#1E2A32;background:#FFFFFF}
+@font-face{font-family:'Vemior';src:url('../fonts/vemior.otf') format('opentype'),url('../fonts/vemior.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+:root{--bg:#EDE7F6;--ink:#2D1B5A;--ink2:#4A3680;--line:#7B66B3;--tile:#DCD2EF;--rule:#C9BBE6}
+body{margin:0;font-family:'Lato',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
 button{font-family:inherit}
+h1,.hd{font-family:'Vemior',Georgia,serif;font-weight:400;font-synthesis:none}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.upl:focus-within{outline:3px solid #8A6420;outline-offset:2px}
-button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #8A6420;outline-offset:2px}
-.banner{background:#1E2A32;color:#FFFFFF;font-size:13px;padding:8px 16px;text-align:center;letter-spacing:0.06em}
+.upl:focus-within{outline:3px solid var(--ink);outline-offset:2px}
+button:focus-visible,textarea:focus-visible,.im-card:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.banner{background:var(--ink);color:var(--bg);font-size:13px;padding:8px 16px;text-align:center;letter-spacing:0.06em}
 .im-wrap{max-width:1160px;margin:0 auto;padding:40px 32px 64px;box-sizing:border-box}
-.im-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:20px 32px;border-bottom:1px solid #D5DDDA}
-.im-logo{font-size:26px;font-weight:600;letter-spacing:0.01em}
-.im-nav{display:flex;flex-wrap:wrap;gap:24px;font-size:16px;color:#3C4A52}
-.im-nav .on{color:#8A6420;font-weight:600}
-.im-title{margin:0 0 8px;font-size:44px;font-weight:600}
-.lead{margin:0 0 24px;font-size:18px;color:#3C4A52;max-width:640px}
-.im-filter{display:flex;flex-direction:column;gap:8px;max-width:360px;padding-bottom:32px}
-.lbl{font-size:16px;font-weight:600}
-.fld{height:52px;font-size:16px;font-family:inherit;border:1px solid #7C8B86;border-radius:8px;padding:0 12px;background:#FFFFFF;color:#1E2A32;width:100%;box-sizing:border-box}
+.im-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:20px 32px;border-bottom:1px solid var(--rule)}
+.im-logo{font-size:30px;letter-spacing:0.01em}
+.im-nav{display:flex;flex-wrap:wrap;gap:24px;font-size:16px;color:var(--ink2)}
+.im-nav .on{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:6px}
+.im-title{margin:0 0 8px;font-size:52px;line-height:1.1}
+.lead{margin:0 0 24px;font-size:18px;color:var(--ink2);max-width:640px}
+.im-filter{display:flex;flex-direction:column;gap:12px;max-width:360px;padding-bottom:32px}
+.lbl{font-size:16px;font-weight:700}
 .im-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 24px}
 .im-card{display:block;width:100%;min-width:0;background:none;border:0;padding:0;text-align:left;cursor:pointer;color:inherit;font:inherit}
-.im-img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;background:#E8EEEC}
-.im-ph{aspect-ratio:1/1;border:2px dashed #7C8B86;background:#E8EEEC;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center;box-sizing:border-box}
-.ph-name{font-weight:600;font-size:17px;color:#1E2A32}
-.ph-tag{font-size:12px;letter-spacing:0.08em;color:#3C4A52}
-.c-cat{padding-top:12px;font-size:13px;letter-spacing:0.08em;color:#3C4A52}
-.c-name{font-size:20px;font-weight:600}
-.c-sub{font-size:15px;color:#3C4A52}
-.back{background:none;border:0;padding:8px 0;font-size:16px;color:#3C4A52;cursor:pointer;text-decoration:underline;min-height:44px}
+.im-img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;background:var(--tile)}
+.im-ph{aspect-ratio:1/1;border:2px dashed var(--line);background:var(--tile);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center;box-sizing:border-box}
+.ph-name{font-size:22px}
+.ph-tag{font-size:12px;letter-spacing:0.08em;color:var(--ink2)}
+.c-cat{padding-top:12px;font-size:13px;letter-spacing:0.08em;color:var(--ink2)}
+.c-name{font-size:26px;line-height:1.15}
+.c-sub{font-size:15px;color:var(--ink2)}
+.back{background:none;border:0;padding:8px 0;font-size:16px;color:var(--ink2);cursor:pointer;text-decoration:underline;min-height:44px}
 .pdp{display:flex;flex-wrap:wrap;gap:48px;padding-top:16px}
 .pdp-l{flex:1 1 320px;max-width:520px;min-width:0}
 .pdp-r{flex:1 1 320px;max-width:560px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.p-name{margin:0 0 4px;font-size:48px;line-height:1.1}
 .thumbs{display:flex;flex-wrap:wrap;gap:12px;padding-top:12px}
-.thumb{width:72px;height:72px;padding:0;border-radius:8px;overflow:hidden;cursor:pointer;background:#E8EEEC;border:1px solid #7C8B86}
-.thumb[aria-pressed="true"]{border:3px solid #1E2A32}
+.thumb{width:72px;height:72px;padding:0;border-radius:8px;overflow:hidden;cursor:pointer;background:var(--tile);border:1px solid var(--line)}
+.thumb[aria-pressed="true"]{border:3px solid var(--ink)}
 .thumb img{display:block;width:100%;height:100%;object-fit:cover}
 .col{display:flex;flex-direction:column;gap:8px}
-textarea.fld{height:auto;min-height:140px;padding:12px;resize:vertical}
-.filebtn{display:inline-flex;align-items:center;height:48px;padding:0 20px;border:2px solid #1E2A32;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;box-sizing:border-box}
-.add{height:52px;background:#1E2A32;color:#FFFFFF;border:0;border-radius:8px;font-size:17px;font-weight:600;cursor:pointer;padding:0 32px;align-self:flex-start}
+textarea.fld{font-size:16px;font-family:inherit;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--ink);width:100%;box-sizing:border-box;min-height:140px;padding:12px;resize:vertical}
+textarea.fld::placeholder{color:var(--ink2)}
+.filebtn{display:inline-flex;align-items:center;height:48px;padding:0 20px;border:2px solid var(--ink);border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;box-sizing:border-box}
+.add{height:52px;background:var(--ink);color:var(--bg);border:0;border-radius:8px;font-size:17px;font-weight:700;cursor:pointer;padding:0 32px;align-self:flex-start}
 .hidden{display:none}
+/* Material UI style outlined select */
+.mui-sel{position:relative;width:100%;margin-top:8px}
+.mui-field{all:unset;box-sizing:border-box;display:flex;align-items:center;width:100%;height:56px;padding:0 40px 0 14px;border:1px solid var(--line);border-radius:4px;font:400 16px/1.4375 'Lato',system-ui,sans-serif;color:var(--ink);cursor:pointer;position:relative}
+.mui-field:hover{border-color:var(--ink)}
+.mui-field:focus-visible,.mui-field[aria-expanded="true"]{border:2px solid var(--ink);padding:0 39px 0 13px;outline:none}
+.mui-val{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mui-arrow{position:absolute;right:7px;top:50%;width:24px;height:24px;margin-top:-12px;fill:var(--ink2);transition:transform .2s}
+.mui-field[aria-expanded="true"] .mui-arrow{transform:rotate(180deg)}
+.mui-lbl{position:absolute;top:-9px;left:10px;padding:0 5px;background:var(--bg);font:400 12px/1.4 'Lato',system-ui,sans-serif;color:var(--ink2);pointer-events:none}
+.mui-field:focus-visible ~ .mui-lbl,.mui-field[aria-expanded="true"] ~ .mui-lbl{color:var(--ink)}
+.mui-menu{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 4px);margin:0;padding:8px 0;list-style:none;background:#FFFFFF;border-radius:4px;max-height:min(336px,60vh);overflow-y:auto;box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}
+.mui-menu[hidden]{display:none}
+.mui-menu li{box-sizing:border-box;min-height:48px;display:flex;align-items:center;padding:6px 16px;font:400 16px/1.5 'Lato',system-ui,sans-serif;color:var(--ink);cursor:pointer}
+.mui-menu li:hover{background:rgba(45,27,90,.06)}
+.mui-menu li[aria-selected="true"]{background:rgba(45,27,90,.12)}
+.mui-menu li.act{background:rgba(45,27,90,.10)}
+.mui-menu li[aria-selected="true"].act{background:rgba(45,27,90,.16)}
 @media (max-width:1023px){
   .im-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .im-wrap{padding:32px 24px 56px}
@@ -58,7 +80,8 @@ textarea.fld{height:auto;min-height:140px;padding:12px;resize:vertical}
   .im-head{padding:14px 16px}
   .im-nav{gap:16px}
   .im-nav-extra{display:none}
-  .im-title{font-size:34px}
+  .im-title{font-size:42px}
+  .p-name{font-size:40px}
   .im-filter{max-width:none}
 }
 </style>
@@ -66,7 +89,7 @@ textarea.fld{height:auto;min-height:140px;padding:12px;resize:vertical}
 <body>
 <div class="banner">PROTOTYPE | OPTION C | 3 / 2 / 1 COLUMNS</div>
 <div class="im-head">
-  <div class="im-logo">Infinity Moments</div>
+  <div class="im-logo hd">Infinity Moments</div>
   <div class="im-nav"><span class="im-nav-extra">Home</span><span class="on">Shop</span><span class="im-nav-extra">Contact</span><span>Cart (0)</span></div>
 </div>
 
@@ -74,9 +97,8 @@ textarea.fld{height:auto;min-height:140px;padding:12px;resize:vertical}
   <h1 class="im-title">Shop</h1>
   <p class="lead">Everything is made to order. Pick a category, open an item, then tell us how to customize it.</p>
   <div class="im-filter">
-    <label for="catSel" class="lbl">Category</label>
-    <select id="catSel" class="fld"></select>
-    <div id="count" style="font-size:14px;color:#3C4A52"></div>
+    <div id="catSel"></div>
+    <div id="count" style="font-size:14px;color:var(--ink2)"></div>
   </div>
   <div id="grid" class="im-grid"></div>
 </main>
@@ -87,15 +109,12 @@ textarea.fld{height:auto;min-height:140px;padding:12px;resize:vertical}
     <div class="pdp-l"><div id="gallery"></div></div>
     <div class="pdp-r">
       <div>
-        <div id="pCat" style="font-size:13px;letter-spacing:0.08em;color:#3C4A52;padding-bottom:4px"></div>
-        <h1 id="pName" style="margin:0 0 4px;font-size:40px;font-weight:600"></h1>
-        <div style="font-size:16px;color:#3C4A52">Made to order</div>
+        <div id="pCat" style="font-size:13px;letter-spacing:0.08em;color:var(--ink2);padding-bottom:4px"></div>
+        <h1 id="pName" class="p-name"></h1>
+        <div style="font-size:16px;color:var(--ink2)">Made to order</div>
       </div>
-      <div id="price" style="font-size:32px;font-weight:600"></div>
-      <div id="optWrap" class="col">
-        <label for="optSel" class="lbl">Choose your option</label>
-        <select id="optSel" class="fld"></select>
-      </div>
+      <div id="price" style="font-size:32px;font-weight:700"></div>
+      <div id="optWrap"><div id="optSel"></div></div>
       <div class="col">
         <label for="noteBox" class="lbl">Customization details</label>
         <textarea id="noteBox" class="fld" rows="5" placeholder="Tell us colors, names, dates, sizes, or anything else we should know."></textarea>
@@ -107,13 +126,13 @@ textarea.fld{height:auto;min-height:140px;padding:12px;resize:vertical}
             <label for="fileIn" class="filebtn">Choose file</label>
             <input id="fileIn" class="vh" type="file">
           </div>
-          <span id="fileLabel" style="font-size:15px;color:#3C4A52">No file chosen</span>
+          <span id="fileLabel" style="font-size:15px;color:var(--ink2)">No file chosen</span>
         </div>
-        <div id="needPhoto" class="hidden" style="font-size:14px;color:#8A6420">Photos are needed for this item.</div>
+        <div id="needPhoto" class="hidden" style="font-size:14px;color:var(--ink);font-weight:700">Photos are needed for this item.</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px">
         <button id="add" class="add" type="button">Add to cart</button>
-        <div id="added" class="hidden" role="status" style="font-size:15px;color:#3C4A52">Added to cart. Prototype only, nothing is saved.</div>
+        <div id="added" class="hidden" role="status" style="font-size:15px;color:var(--ink2)">Added to cart. Prototype only, nothing is saved.</div>
       </div>
     </div>
   </div>
@@ -170,26 +189,62 @@ const CATS = [
 ];
 const $ = (id) => document.getElementById(id);
 const money = (n) => '$' + n;
-const ICON = (s) => '<svg aria-hidden="true" width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="#3C4A52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M3 17l5-4 4 3 3-2 6 4"></path></svg>';
+const ICON = (s) => '<svg aria-hidden="true" width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="#4A3680" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M3 17l5-4 4 3 3-2 6 4"></path></svg>';
 const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+
+function MuiSelect(root, label) {
+  const id = root.id;
+  root.classList.add('mui-sel');
+  root.innerHTML = '<button type="button" class="mui-field" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="' + id + '-list" aria-labelledby="' + id + '-lbl ' + id + '-val"><span class="mui-val" id="' + id + '-val"></span><svg class="mui-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"></path></svg></button><span class="mui-lbl" id="' + id + '-lbl">' + label + '</span><ul class="mui-menu" id="' + id + '-list" role="listbox" aria-labelledby="' + id + '-lbl" hidden></ul>';
+  const btn = root.querySelector('.mui-field'), list = root.querySelector('.mui-menu'), valEl = root.querySelector('.mui-val');
+  const api = { value: '', onChange: null };
+  let opts = [], act = 0;
+  function paint() {
+    const cur = opts.findIndex((o) => o.value === api.value);
+    valEl.textContent = cur > -1 ? opts[cur].text : '';
+    list.innerHTML = opts.map((o, i) => '<li role="option" id="' + id + '-o' + i + '" data-i="' + i + '" aria-selected="' + (i === cur) + '"' + (i === act ? ' class="act"' : '') + '>' + esc(o.text) + '</li>').join('');
+  }
+  function open() { act = Math.max(opts.findIndex((o) => o.value === api.value), 0); paint(); list.hidden = false; btn.setAttribute('aria-expanded', 'true'); btn.setAttribute('aria-activedescendant', id + '-o' + act); const a = list.children[act]; if (a) a.scrollIntoView({ block: 'nearest' }); }
+  function close() { list.hidden = true; btn.setAttribute('aria-expanded', 'false'); btn.removeAttribute('aria-activedescendant'); }
+  function pick(i) { const v = opts[i].value, ch = v !== api.value; api.value = v; close(); paint(); if (ch && api.onChange) api.onChange(v); }
+  function move(d) { act = (act + d + opts.length) % opts.length; paint(); btn.setAttribute('aria-activedescendant', id + '-o' + act); const a = list.children[act]; if (a) a.scrollIntoView({ block: 'nearest' }); }
+  btn.addEventListener('click', () => (list.hidden ? open() : close()));
+  btn.addEventListener('blur', close);
+  btn.addEventListener('keydown', (e) => {
+    const o = !list.hidden;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (!o) open(); else move(e.key === 'ArrowDown' ? 1 : -1); }
+    else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!o) open(); else pick(act); }
+    else if (e.key === 'Escape' && o) { e.preventDefault(); close(); }
+    else if (e.key === 'Home' && o) { e.preventDefault(); act = 0; move(0); }
+    else if (e.key === 'End' && o) { e.preventDefault(); act = opts.length - 1; move(0); }
+    else if (e.key === 'Tab' && o) close();
+  });
+  list.addEventListener('mousedown', (e) => e.preventDefault());
+  list.addEventListener('click', (e) => { const li = e.target.closest('li'); if (li) pick(Number(li.dataset.i)); });
+  api.setOptions = (o, v) => { opts = o; api.value = v; close(); paint(); };
+  return api;
+}
 
 const flat = [];
 CATS.forEach((c) => c.products.forEach((p, i) => flat.push({ id: c.id + ':' + i, cat: c, p })));
 let cur = null, imgIdx = 0;
 
-$('catSel').innerHTML = '<option value="all">All</option>' + CATS.map((c) => '<option value="' + c.id + '">' + esc(c.name) + '</option>').join('');
+const catSel = MuiSelect($('catSel'), 'Category');
+catSel.setOptions([{ value: 'all', text: 'All' }].concat(CATS.map((c) => ({ value: c.id, text: c.name }))), 'all');
+const optSel = MuiSelect($('optSel'), 'Choose your option');
 
 function renderGrid() {
-  const f = $('catSel').value;
+  const f = catSel.value;
   const shown = flat.filter((x) => f === 'all' || x.cat.id === f);
   $('count').textContent = shown.length + (shown.length === 1 ? ' item' : ' items');
   $('grid').innerHTML = shown.map((x) => {
     const prices = x.p.v.map((v) => v.price), n = x.p.v.length;
     const media = x.p.imgs.length
       ? '<img class="im-img" src="' + x.p.imgs[0] + '" alt="' + esc(x.p.name) + '" loading="lazy">'
-      : '<div class="im-ph">' + ICON(40) + '<div class="ph-name">' + esc(x.p.name) + '</div><div class="ph-tag">PLACEHOLDER IMAGE</div></div>';
+      : '<div class="im-ph">' + ICON(40) + '<div class="ph-name hd">' + esc(x.p.name) + '</div><div class="ph-tag">PLACEHOLDER IMAGE</div></div>';
     return '<button class="im-card" type="button" data-id="' + x.id + '">' + media +
-      '<div class="c-cat">' + esc(x.cat.name.toUpperCase()) + '</div><div class="c-name">' + esc(x.p.name) + '</div>' +
+      '<div class="c-cat">' + esc(x.cat.name.toUpperCase()) + '</div><div class="c-name hd">' + esc(x.p.name) + '</div>' +
       '<div class="c-sub">' + (n > 1 ? 'From ' + money(Math.min(...prices)) : money(prices[0])) + ' | ' + (n > 1 ? n + ' options' : 'Single item') + '</div></button>';
   }).join('');
 }
@@ -197,7 +252,7 @@ function renderGrid() {
 function renderGallery() {
   const imgs = cur.p.imgs;
   if (!imgs.length) {
-    $('gallery').innerHTML = '<div class="im-ph" style="gap:12px;padding:24px">' + ICON(56) + '<div class="ph-name" style="font-size:24px">' + esc(cur.p.name) + '</div><div class="ph-tag" style="font-size:13px">PLACEHOLDER IMAGE</div></div>';
+    $('gallery').innerHTML = '<div class="im-ph" style="gap:12px;padding:24px">' + ICON(56) + '<div class="ph-name hd" style="font-size:30px">' + esc(cur.p.name) + '</div><div class="ph-tag" style="font-size:13px">PLACEHOLDER IMAGE</div></div>';
     return;
   }
   let h = '<img class="im-img" src="' + imgs[imgIdx] + '" alt="' + esc(cur.p.name) + '">';
@@ -207,13 +262,13 @@ function renderGallery() {
   $('gallery').innerHTML = h;
 }
 
-function renderPrice() { $('price').textContent = money(cur.p.v[Number($('optSel').value)].price); $('added').classList.add('hidden'); }
+function renderPrice() { $('price').textContent = money(cur.p.v[Number(optSel.value)].price); $('added').classList.add('hidden'); }
 
 function openProduct(id) {
   cur = flat.find((x) => x.id === id); imgIdx = 0;
   $('pName').textContent = cur.p.name;
   $('pCat').textContent = cur.cat.name.toUpperCase();
-  $('optSel').innerHTML = cur.p.v.map((v, i) => '<option value="' + i + '">' + esc(v.label) + ' (' + money(v.price) + ')</option>').join('');
+  optSel.setOptions(cur.p.v.map((v, i) => ({ value: String(i), text: v.label + ' (' + money(v.price) + ')' })), '0');
   $('optWrap').classList.toggle('hidden', cur.p.v.length < 2);
   $('noteBox').value = ''; $('fileIn').value = ''; $('fileLabel').textContent = 'No file chosen';
   $('needPhoto').classList.toggle('hidden', !cur.p.photo);
@@ -222,10 +277,10 @@ function openProduct(id) {
   window.scrollTo(0, 0);
 }
 
-$('catSel').addEventListener('change', renderGrid);
+catSel.onChange = renderGrid;
 $('grid').addEventListener('click', (e) => { const b = e.target.closest('.im-card'); if (b) openProduct(b.dataset.id); });
 $('gallery').addEventListener('click', (e) => { const b = e.target.closest('.thumb'); if (b) { imgIdx = Number(b.dataset.i); renderGallery(); } });
-$('optSel').addEventListener('change', renderPrice);
+optSel.onChange = renderPrice;
 $('fileIn').addEventListener('change', (e) => { $('fileLabel').textContent = e.target.files[0] ? e.target.files[0].name : 'No file chosen'; });
 $('add').addEventListener('click', () => $('added').classList.remove('hidden'));
 $('back').addEventListener('click', () => { $('product').classList.add('hidden'); $('shop').classList.remove('hidden'); });
